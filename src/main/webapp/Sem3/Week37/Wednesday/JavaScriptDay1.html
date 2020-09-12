@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <script>
+            //Opgave 1:
+            //Observe: no return type, no type on parameters
+            function add(n1, n2){
+             return n1 +n2;
+            }
+
+            var sub = function(n1,n2){
+              return n1 - n2
+            }
+
+            var cb = function(n1,n2, callback){
+            try{
+            if((typeof callback === "function") && (typeof n1 ==="number") && (typeof n2 === "number")){
+              return "Result from the two numbers: "+n1+"+"+n2+"="+callback(n1,n2)
+            }else{
+              throw new Error("Whoops. you did something wrong")
+            }
+            }catch (e){
+              console.error(e.name + ": " + e.message)
+            }
+            };
+
+            //Opgave 2:
+
+            console.log(add(1,2))     // 3. add(1,2) will return the sum of the 2 numbers
+            console.log(add)          // Wil print the refrence of add
+            console.log(add(1,2,3)) ; // 3. Will add 1 and 2 and ignore 3.
+            console.log(add(1));	    // NaN. You are trying to add a number with an undefiend var
+            console.log(cb(3,3,add)); // Result from the two numbers: 3+3=6
+            console.log(cb(4,3,sub)); // Result from the two number: 4+3=1
+            console.log(cb(3,3,add())); //Uncaught TypeError: callback is not a function. can't do callback on a fucntion, has to be a refrence
+            console.log(cb(3,"hh",add));// Wil print 3hh, since you are trying to add a number and a string, js will se both var as strings
+            console.log("hej")
+
+            //Opgave 3
+            // se cb function
+
+            //Opgave 4
+
+            var mu = function(n1, n2){
+              return n1*n2;
+            }
+            console.log(cb(5,5,mu));
+            //Opgave 5
+
+            console.log(cb(6,6,function(n1,n2){
+              return n1/n2;
+            }))
+
+            //Callbacks
+
+            //Opgave 1
+
+            var myArray = ["Lars", "Henrik","gitte","Jesper","anne", "bo", "ib", "mie"]
+            var myNewArray = myArray.filter(name => name.length <= 3);
+            myArray.forEach(name => console.log("myArray: " +name))
+            myNewArray.forEach(name => console.log("myNewArray: " + name))
+
+            //Opgave 2
+
+            var myNewNewArray = myNewArray.map(name => name.toUpperCase())
+            console.log(myNewNewArray)
+
+            //Opgave 3
+
+            var htmlArray = myArray.map(function(name){
+                return "<li>"+name+"</li>";
+            });
+            var arrayAsString = "<ul>" + htmlArray.join("") + "</ul>";
+
+
+            console.log(arrayAsString)
+
+
+            //Opgave 4
+
+            var cars = [
+              { id: 1, year: 1997, make: 'Ford', model: 'E350', price: 3000 },
+              { id: 2, year: 1999, make: 'Chevy', model: 'Venture', price: 4900 },
+              { id: 3, year: 2000, make: 'Chevy', model: 'Venture', price: 5000 },
+              { id: 4, year: 1996, make: 'Jeep', model: 'Grand Cherokee', price: 4799 },
+              { id: 5, year: 2005, make: 'Volvo', model: 'V70', price: 44799 }
+            ];
+
+            var carsNewer1999 = cars.filter(car => car.year >=2000)
+            var carsOnlyVolvo = cars.filter(car => car.make == "Volvo")
+            var carsBelow5000 = cars.filter(car => car.price < 5000)
+            console.log(carsNewer1999)
+            console.log(carsOnlyVolvo)
+            console.log(carsBelow5000)
+
+        </script>    
+    </body>
+</html>

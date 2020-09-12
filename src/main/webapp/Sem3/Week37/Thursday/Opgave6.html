@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div>Dynamic UI manipulation using data obtained via fetch</div>
+        <ul id="ul1"></ul>
+        
+        
+        <form>
+          <input type="text" id="userindput" value="">
+          <button type="button" id="button1">Get user</button>
+        </form>
+        <script>
+
+            var url = "https://jsonplaceholder.typicode.com/users"
+            
+            
+            
+            console.log("1")
+            function fetcData(){
+            fetch(url)
+                    .then(res => res.json()) //in flow1, just do it
+                    .then(persons => {
+                        // Inside this callback, and only here, the response data is available
+                        console.log("data", persons);
+                        /* data now contains the response, converted to JavaScript
+                         Observe the output from the log-output above
+                         Now, just build your DOM changes using the data*/
+            
+                       
+                       var lis = persons.map((p)=>{
+                          line = "<li>"+p.name+"</li>"
+                          return line;
+                       })
+                       document.getElementById("ul1").innerHTML = lis.join("")
+        
+                    })
+             console.log("2");
+            }
+            
+            fetcData()
+            
+            function getUserById(){
+                
+                let userId = document.getElementById("userindput").value;
+                let urlId = url + "/" +userId;
+                console.log(urlId)
+                fetch(urlId)
+                            .then(res => res.json()) //in flow1, just do it
+                            .then(persons => {
+                                console.log(persons)
+                                persons.name;
+                                let resultString = "Name: " + persons.name + "<br>" +
+                                                   "Phone: "+ persons.phone + "<br><br>"
+                                console.log(persons.name)
+                            document.getElementById("ul1").innerHTML = resultString
+            })};
+             document.getElementById("button1").addEventListener("click", getUserById);
+        </script>
+
+
+    </body>
+</html>
+
+

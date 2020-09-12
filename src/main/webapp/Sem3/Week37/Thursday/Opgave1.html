@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+    <body>
+        <h1>Opgave 1.a</h1>
+        
+        <p>When the page initially is loaded all divs should be given a colour of your choice</p>
+        <p>Hints: use document.getElementsByTagName() (will return an array of Dom Nodes) and element.style.backgroundColor </p>
+        
+        
+        
+        
+        <div id="10">
+            div 1 (id=10)
+        </div>
+        <div id="11">
+            div 2 (id=11)
+        </div>
+        <div id="12">
+            div 3 (id=12)
+        </div>    
+     <script>
+        
+           var divList = document.getElementsByTagName("div");
+           
+           for(var i = 0; i < divList.length; i++){
+               if(i === 0)
+                   divList[i].style.backgroundColor = "green"
+               else
+                   divList[i].style.backgroundColor = "yellow"
+               
+           }
+           
+         
+    </script>
+
+    <h1>Opgave 1.b</h1>
+    <p>Add a button, and assign a click handler to the button. When the button is clicked each div should be given a unique colour.</p>
+    <p>Hints: use document.getElementById(..) to get the individual div’s</p>
+    
+    <button id="divButton">Change color</button>
+    
+    
+    <script>
+        function getRandomColor() {
+            var letters = '0123456789ABCDEF';
+            var color = '#';
+            for (var i = 0; i < 6; i++) {
+            color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+        
+        document.getElementById("divButton").addEventListener("click", changeColorFunction);
+        
+        function changeColorFunction(){
+           for(var i = 0; i < divList.length; i++){
+                divList[i].style.backgroundColor = getRandomColor();
+               
+
+            }
+        }
+        
+        
+    </script>
+        
+        <br>
+        <br>
+        <a href="index.html"><button>Tilbage</button></a>
+    </body>
+   
+</html>

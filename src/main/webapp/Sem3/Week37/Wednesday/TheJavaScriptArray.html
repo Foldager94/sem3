@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        
+        <script>
+                        //a:
+              var boys = ["Peter", "lars", "Ole"];
+              var girls = ["Janne", "hanne", "Sanne"];
+            //Yes, concat it will mutate an existing array.
+              console.log("Opgave a:");
+              console.log(boys);
+              console.log(girls);
+            //b:
+              var all = boys.concat(girls);
+
+              console.log("Opgave b:")
+              console.log(all);
+
+            //c:
+              var string1 = all.join(' , ');
+              var string2 = all.join(' - ');
+
+              console.log("Opgave c:");
+              console.log(string1);
+              console.log(string2);
+
+            //d:
+              girls.push("Lone", "Gitte");
+
+              console.log("Opgave d:");
+              console.log(girls);
+
+            //e:
+              boys.unshift("Hans", "Kurt");
+
+              console.log("Opgave e:");
+              console.log(boys)
+
+            //f:
+              boys.shift();
+
+              console.log("Opgave f:")
+              console.log(boys)
+
+            //g:
+              girls.pop();
+
+              console.log("Opgave g:");
+              console.log(girls);
+
+            //h:
+              boys.splice(3,1);
+              girls.splice(0,1);
+
+              console.log("Opgave h:")
+              console.log(boys)
+              console.log(girls)
+
+            //i:
+              all.reverse();
+
+              console.log("Opgave i:");
+              console.log(all);
+
+            //j:
+              all.sort();
+
+              console.log("Opgave j:");
+              console.log(all);
+
+            //k:
+              function sortStrings(a, b) {
+                a = a.toLowerCase();
+                b = b.toLowerCase();
+                return a > b ? 1 : (a < b ? -1 : 0);
+              }
+              all.sort(sortStrings);
+              console.log("Opgave k:");
+              console.log(all);
+
+            //l
+              var newAll = all.map(function(v){return v.toUpperCase()});
+
+              console.log("Opgave l:");
+              console.log(newAll);
+
+            //m
+              var newNewAll = all.filter(function(name){
+                if(name.startsWith("L") || name.startsWith("l"))
+                return true});
+
+              console.log("Opgave m:");
+              console.log(newNewAll);
+
+        </script>    
+    </body>
+</html>
